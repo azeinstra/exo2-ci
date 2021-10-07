@@ -1,0 +1,11 @@
+stages:
+  - build
+  #- test
+
+build website:
+  stage: build
+  image: node:14-alpine
+  script:
+    - npm install # installe les dépendances
+    - npm run build # compilation des fichiers sources => dossier public/
+    - test -f public/index.html
