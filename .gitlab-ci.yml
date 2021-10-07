@@ -3,6 +3,11 @@ image: node:14-alpine # image par défault pour tous les jobs
 stages:
   - build
   - test
+  - deploy staging
+
+variables:
+  STAGING_DOMAIN: chris-todobem-staging.surge.sh
+  PRODUCTION_DOMAIN: chris-todobem.surge.sh
 
 build website:
   stage: build
@@ -18,3 +23,9 @@ test artifacts:
   stage: test
   script:
     - grep "Bravo" public/index.html
+
+deploy to surge:
+  stage: deploy staging
+  script:
+   - npm install -g surge
+   - surge --project public --domain $STAGING_DOMAIN
