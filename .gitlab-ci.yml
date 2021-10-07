@@ -27,5 +27,6 @@ test artifacts:
 deploy to surge:
   stage: deploy staging
   script:
-   - npm install -g surge
-   - surge --project public --domain $STAGING_DOMAIN
+    - echo "Deploy to " $STAGING_DOMAIN
+    - npm install -g surge
+    - surge --project public --domain $STAGING_DOMAIN
