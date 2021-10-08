@@ -1,4 +1,4 @@
 node_modules/
 .cache/
 public
-gitlab-ci.yml
+.gitlab-ci.yml
