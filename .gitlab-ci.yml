@@ -41,6 +41,8 @@ deploy to staging (surge):
 
 deploy to prod (surge):
   stage: deploy production
+  only:
+    - main
   when: manual
   script:
     - echo "Deploy to" $PRODUCTION_DOMAIN
