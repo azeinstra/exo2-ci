@@ -4,10 +4,16 @@ stages:
   - build
   - test
   - deploy staging
+  - deploy production
 
 variables:
   STAGING_DOMAIN: chris-todobem-staging.surge.sh
   PRODUCTION_DOMAIN: chris-todobem.surge.sh
+
+# Deux autres variables d'env ont été définies au niveau
+# de l'interface gitlab (projet>Settings>CI/CD>Variables)
+# SURGE_LOGIN et SURGE_TOKEN, variables utilisées par 
+# la commande surge pour identification au service
 
 build website:
   stage: build
@@ -24,9 +30,17 @@ test artifacts:
   script:
     - grep "Bravo" public/index.html
 
-deploy to surge:
+deploy to staging (surge):
   stage: deploy staging
   script:
-    - echo "Deploy to " $STAGING_DOMAIN
+    - echo "Deploy to" $STAGING_DOMAIN
     - npm install -g surge
     - surge --project public --domain $STAGING_DOMAIN
+
+deploy to prod (surge):
+  stage: deploy production
+  when: manual
+  script:
+    - echo "Deploy to" $PRODUCTION_DOMAIN
+    - npm install -g surge
+    - surge --project public --domain $PRODUCTION_DOMAIN
