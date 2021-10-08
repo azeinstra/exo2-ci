@@ -12,7 +12,7 @@ const headingStyles = {
   maxWidth: 320,
 }
 const headingAccentStyles = {
-  color: "#135423",
+  color: "#f505f1",
 }
 
 // markup
