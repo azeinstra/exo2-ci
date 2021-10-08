@@ -12,7 +12,7 @@ const headingStyles = {
   maxWidth: 320,
 }
 const headingAccentStyles = {
-  color: "#663399",
+  color: "#135423",
 }
 
 // markup
@@ -24,6 +24,7 @@ const IndexPage = () => {
         Bravo
         <br />
         <span style={headingAccentStyles}>Site Gatsby opérationnel</span>
+        <p>Nouvel apport à l'application</p>
       </h1>
     </main>
   )
