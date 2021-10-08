@@ -32,6 +32,8 @@ test artifacts:
 
 deploy to staging (surge):
   stage: deploy staging
+  only:
+    - main # job exécuté seulement si le commit est fait sur la branche main
   script:
     - echo "Deploy to" $STAGING_DOMAIN
     - npm install -g surge
@@ -39,6 +41,8 @@ deploy to staging (surge):
 
 deploy to prod (surge):
   stage: deploy production
+  only:
+    - main
   when: manual
   script:
     - echo "Deploy to" $PRODUCTION_DOMAIN
