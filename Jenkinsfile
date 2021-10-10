@@ -18,17 +18,9 @@ pipeline {
                 sh 'npm install'
                 sh 'npm run build'
                 sh 'test -f public/index.html'
-                // sh 'make'
-                // archiveArtifacts artifacts: 'public/*', fingerprint: true 
 
             }
         }
-        
-        // stage('Test artifacts') {
-        //     steps {
-        //         sh 'grep "Bravo" public/index.html'   
-        //     }
-        // }
 
         stage('Deploy staging') {
             steps {
@@ -38,10 +30,11 @@ pipeline {
             }
         }
 
-        // stage('Deploy deployment') {
-        //     steps {
-        //         sh 'echo "coucou"'
-        //     }
-        // }
+        stage('Deploy deployment') {
+            steps {
+                sh 'echo "Deploy to" $PRODUCTION_DOMAIN'
+                sh 'surge --project public --domain $PRODUCTION_DOMAIN'
+            }
+        }
     }
 }
