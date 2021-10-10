@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'node:14-alpine' }
+        docker {image 'node:14-alpine'}
     }
 
     stages {
@@ -15,13 +15,13 @@ pipeline {
         
         stage('Run') {
             steps {
-                
+                sh 'echo "coucou"'   
             }
         }
 
         stage('Test') {
             steps {
-
+                sh 'echo "coucou"'
             }
         }
 
