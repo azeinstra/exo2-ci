@@ -9,7 +9,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'npm i npm@latest'
+                sh 'apt install build-essential'
+                sh 'npm install'
                 sh 'npm run build'
                 sh 'test -f public/index.html'
                 // sh 'make'
