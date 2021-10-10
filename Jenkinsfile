@@ -30,8 +30,9 @@ pipeline {
             }
         }
 
-        stage('Deploy deployment') {
+        stage('Deploy to prod') {
             steps {
+                input "Deploy to prod ?"
                 sh 'echo "Deploy to" $PRODUCTION_DOMAIN'
                 sh 'surge --project public --domain $PRODUCTION_DOMAIN'
             }
