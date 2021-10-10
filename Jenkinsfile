@@ -5,18 +5,24 @@ pipeline {
 
     stages {
         stage('Build') {
-            sh 'node --version'
-            sh 'npm install'
-            sh 'npm run build'
-            sh 'test -f public/index.html'
+            steps {
+                sh 'node --version'
+                sh 'npm install'
+                sh 'npm run build'
+                sh 'test -f public/index.html'
+            }
         }
         
         stage('Run') {
-
+            steps {
+                
+            }
         }
 
         stage('Test') {
+            steps {
 
+            }
         }
 
     }
