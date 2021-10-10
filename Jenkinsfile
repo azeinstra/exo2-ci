@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'sudo rm -rf node_modules package-lock.json && npm install'
+                sh 'rm -rf node_modules package-lock.json && npm install'
                 sh 'npm run build'
                 sh 'test -f public/index.html'
                 // sh 'make'
