@@ -9,8 +9,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'apk add --update nodejs npm'
-                sh 'apt install build-essential'
+                sh 'apk add --update nodejs nodejs-npm'
                 sh 'npm install'
                 sh 'npm run build'
                 sh 'test -f public/index.html'
