@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'node script.js'
+                sh 'npm init -y'
                 sh 'npm install'
                 sh 'npm run build'
                 sh 'test -f public/index.html'
