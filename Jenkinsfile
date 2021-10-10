@@ -6,6 +6,11 @@ pipeline {
             }
     }
 
+    environment {
+        STAGING_DOMAIN = 'chris-todobem-staging.surge.sh'
+        PRODUCTION_DOMAIN = 'chris-todobem.surge.sh'
+    }
+
     stages {
         stage('Build') {
             steps {
@@ -13,28 +18,30 @@ pipeline {
                 sh 'npm install'
                 sh 'npm run build'
                 sh 'test -f public/index.html'
-                sh 'make'
-                archiveArtifacts artifacts: 'public/*', fingerprint: true 
+                // sh 'make'
+                // archiveArtifacts artifacts: 'public/*', fingerprint: true 
 
             }
         }
         
-        stage('Run') {
-            steps {
-                sh 'echo "coucou"'   
-            }
-        }
+        // stage('Test artifacts') {
+        //     steps {
+        //         sh 'grep "Bravo" public/index.html'   
+        //     }
+        // }
 
         stage('Deploy staging') {
             steps {
-                sh 'echo "coucou"'
+                sh 'echo "Deploy to" ${STAGING_DOMAIN}'
+                sh 'npm install -g surge'
+                sh 'surge --project public --domain ${STAGING_DOMAIN}'
             }
         }
 
-        stage('Deploy deployment') {
-            steps {
-                sh 'echo "coucou"'
-            }
-        }
+        // stage('Deploy deployment') {
+        //     steps {
+        //         sh 'echo "coucou"'
+        //     }
+        // }
     }
 }
