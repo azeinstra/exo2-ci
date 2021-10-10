@@ -10,7 +10,6 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'npm init -y'
-                sh 'npm install'
                 sh 'npm run build'
                 sh 'test -f public/index.html'
                 // sh 'make'
